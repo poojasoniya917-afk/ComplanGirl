@@ -1,401 +1,218 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Himanshi ke liye 💖</title>
 <style>
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    font-family: var(--font-sans);
-  }
-
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; font-family: 'Segoe UI', sans-serif; }
   #app {
-    min-height: 600px;
+    min-height: 100vh;
     background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #ffecd2 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 1.25rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    border-radius: var(--border-radius-lg);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 2rem 1.25rem; text-align: center; position: relative; overflow: hidden;
   }
-
-  .hearts-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-  }
-
-  .floating-heart {
-    position: absolute;
-    font-size: 18px;
-    animation: floatUp 6s ease-in infinite;
-    opacity: 0;
-  }
-
+  .hearts-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 0; }
+  .floating-heart { position: absolute; animation: floatUp 6s ease-in infinite; opacity: 0; }
   @keyframes floatUp {
-    0% {
-      opacity: 0;
-      transform: translateY(100%) scale(0.5);
-    }
-
-    20% {
-      opacity: 1;
-    }
-
-    80% {
-      opacity: 0.6;
-    }
-
-    100% {
-      opacity: 0;
-      transform: translateY(-200px) scale(1.2);
-    }
+    0% { opacity: 0; transform: translateY(100vh) scale(0.5); }
+    20% { opacity: 1; }
+    80% { opacity: 0.6; }
+    100% { opacity: 0; transform: translateY(-100px) scale(1.2); }
   }
-
   .main-card {
-    background: rgba(255, 255, 255, 0.92);
-    border-radius: 24px;
-    padding: 2rem 1.5rem;
-    max-width: 360px;
-    width: 100%;
-    box-shadow: 0 8px 32px rgba(255, 100, 130, 0.18);
-    position: relative;
-    z-index: 2;
+    background: rgba(255,255,255,0.95); border-radius: 28px; padding: 2.2rem 1.75rem;
+    max-width: 390px; width: 100%; box-shadow: 0 12px 40px rgba(255,100,130,0.22);
+    position: relative; z-index: 2;
   }
-
-  .emoji-big {
-    font-size: 64px;
-    margin-bottom: 0.75rem;
-    display: block;
-    animation: pulse 1.5s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-
-    0%,
-    100% {
-      transform: scale(1)
-    }
-
-    50% {
-      transform: scale(1.12)
-    }
-  }
-
-  h1 {
-    font-size: 22px;
-    font-weight: 500;
-    color: #c0365a;
-    margin-bottom: 0.4rem;
-  }
-
-  .subtitle {
-    font-size: 14px;
-    color: #e07090;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-  }
-
-  .nickname-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-  }
-
-  .chip {
-    background: #ffe0ea;
-    color: #c0365a;
-    font-size: 12px;
-    padding: 4px 10px;
-    border-radius: 20px;
-    border: 1px solid #ffb3c6;
-    font-weight: 500;
-  }
-
-  .question {
-    font-size: 18px;
-    font-weight: 500;
-    color: #a0244a;
-    margin-bottom: 1.5rem;
-  }
-
-  .btn-row {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-  }
-
+  .emoji-big { font-size: 72px; margin-bottom: 0.75rem; display: block; animation: pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.14)} }
+  h1 { font-size: 24px; font-weight: 700; color: #c0365a; margin-bottom: 0.35rem; }
+  .subtitle { font-size: 14px; color: #e07090; margin-bottom: 1.4rem; line-height: 1.65; }
+  .nickname-chips { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin-bottom: 1.5rem; }
+  .chip { background: #ffe0ea; color: #c0365a; font-size: 12px; padding: 5px 12px; border-radius: 20px; border: 1px solid #ffb3c6; font-weight: 600; }
+  .question { font-size: 19px; font-weight: 700; color: #a0244a; margin-bottom: 1.6rem; line-height: 1.4; }
+  .btn-row { display: flex; gap: 14px; justify-content: center; }
   .btn-yes {
-    background: #ff4d6d;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    padding: 14px 36px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.15s;
-    box-shadow: 0 4px 16px rgba(255, 77, 109, 0.4);
+    background: #ff4d6d; color: white; border: none; border-radius: 50px;
+    padding: 15px 40px; font-size: 17px; font-weight: 700; cursor: pointer;
+    transition: transform 0.15s; box-shadow: 0 5px 18px rgba(255,77,109,0.45);
+    -webkit-tap-highlight-color: transparent;
   }
-
-  .btn-yes:active {
-    transform: scale(0.96);
-  }
-
+  .btn-yes:active { transform: scale(0.95); }
   .btn-no {
-    background: white;
-    color: #888;
-    border: 1.5px solid #ddd;
-    border-radius: 50px;
-    padding: 14px 36px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.2s;
+    background: white; color: #999; border: 1.5px solid #ddd; border-radius: 50px;
+    padding: 15px 36px; font-size: 16px; cursor: pointer; transition: all 0.3s;
+    -webkit-tap-highlight-color: transparent;
   }
-
   .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 240, 245, 0.97);
-    border-radius: 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 1.5rem;
-    z-index: 10;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255,240,248,0.98); border-radius: 28px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 2rem 1.5rem; z-index: 10; opacity: 0; pointer-events: none; transition: opacity 0.3s; overflow-y: auto;
   }
-
-  .overlay.show {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  .tease-emoji {
-    font-size: 52px;
-    margin-bottom: 0.75rem;
-    display: block;
-  }
-
+  .overlay.show { opacity: 1; pointer-events: all; }
+  .tease-emoji { font-size: 56px; margin-bottom: 0.75rem; display: block; }
   .tease-text {
-    font-size: 15px;
-    color: #a0244a;
-    font-weight: 500;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
+    font-size: 15px; color: #a0244a; font-weight: 500; line-height: 1.75; margin-bottom: 1.6rem;
+    background: #fff0f5; border-radius: 16px; padding: 1rem 1.25rem; border: 1px solid #ffc8d8;
   }
-
-  .btn-no-again {
-    background: white;
-    color: #aaa;
-    border: 1.5px solid #ddd;
-    border-radius: 50px;
-    padding: 10px 28px;
-    font-size: 14px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    transition: all 0.2s;
-  }
-
+  .overlay-btns { display: flex; flex-direction: column; gap: 10px; width: 100%; }
   .btn-yes-now {
-    background: #ff4d6d;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    padding: 12px 32px;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(255, 77, 109, 0.35);
+    background: #ff4d6d; color: white; border: none; border-radius: 50px;
+    padding: 14px 32px; font-size: 16px; font-weight: 700; cursor: pointer;
+    box-shadow: 0 5px 14px rgba(255,77,109,0.38); -webkit-tap-highlight-color: transparent;
   }
-
-  .no-count-hint {
-    font-size: 12px;
-    color: #e07090;
-    margin-top: 8px;
+  .btn-no-again {
+    background: white; color: #bbb; border: 1.5px solid #e0e0e0; border-radius: 50px;
+    padding: 11px 28px; font-size: 13px; cursor: pointer; -webkit-tap-highlight-color: transparent;
   }
-
+  .no-count-hint { font-size: 12px; color: #e07090; margin-top: 10px; font-style: italic; }
   .yes-screen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    border-radius: 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    z-index: 20;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s;
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(145deg, #ff758c, #ff7eb3, #ffa8cc);
+    border-radius: 28px; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; padding: 2rem 1.5rem; z-index: 20;
+    opacity: 0; pointer-events: none; transition: opacity 0.5s; overflow: hidden;
   }
-
-  .yes-screen.show {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  .yes-screen h2 {
-    color: white;
-    font-size: 26px;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-  }
-
-  .yes-screen p {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 15px;
-    line-height: 1.7;
-  }
-
-  .confetti-emoji {
-    font-size: 36px;
-    margin: 1rem 0;
-    letter-spacing: 8px;
-  }
+  .yes-screen.show { opacity: 1; pointer-events: all; }
+  .yes-screen h2 { color: white; font-size: 28px; font-weight: 800; margin-bottom: 0.4rem; }
+  .yes-screen .sub { color: rgba(255,255,255,0.9); font-size: 15px; line-height: 1.8; margin-top: 1rem; }
+  .confetti-row { font-size: 34px; margin: 1rem 0; letter-spacing: 10px; }
+  .yes-big { font-size: 80px; animation: bounce 0.8s ease-in-out infinite alternate; }
+  @keyframes bounce { from{transform:scale(0.9)} to{transform:scale(1.1)} }
+  .sparkle { position: absolute; font-size: 22px; animation: twinkle 1.5s ease-in-out infinite; }
+  @keyframes twinkle { 0%,100%{opacity:0;transform:scale(0.5)} 50%{opacity:1;transform:scale(1.2)} }
 </style>
-
+</head>
+<body>
 <div id="app">
   <div class="hearts-bg" id="hearts"></div>
-
   <div class="main-card" id="mainCard">
     <span class="emoji-big">💘</span>
-    <h1>Hey Himanshi!</h1>
+    <h1>Hey Himanshi! 🌸</h1>
     <p class="subtitle">Ek chhota sa sawaal hai mere pyaari...</p>
     <div class="nickname-chips">
-      <span class="chip">COMPLAN GIRL</span>
-      <span class="chip">My Wife </span>
-      <span class="chip">Meri Jaan</span>
-      <span class="chip">Meri Katrina Kaif</span>
-      <span class="chip">Mere 9 Saal Ka Pyaar </span>
-      <span class="chip">My Everything</span>
+      <span class="chip">🥛 COMPLAN GIRL</span>
+      <span class="chip">💍 My Wife</span>
+      <span class="chip">❤️ Meri Jaan</span>
+      <span class="chip">🌟 Meri Katrina Kaif</span>
+      <span class="chip">🕰️ Mere 9 Saal Ka Pyaar</span>
+      <span class="chip">✨ My Everything</span>
     </div>
-    <p class="question">Kya tum mujhse pyaar karti ho? 🥺</p>
+    <p class="question">Kya tum mujhse pyaar karti ho? 🥺👉👈</p>
     <div class="btn-row">
       <button class="btn-yes" onclick="sayYes()">Haan! ❤️</button>
       <button class="btn-no" id="noBtn" onclick="sayNo()">Nahi 😒</button>
     </div>
-
     <div class="overlay" id="teaseOverlay">
       <span class="tease-emoji" id="teaseEmoji">😢</span>
-      <p class="tease-text" id="teaseText">Loading...</p>
-      <button class="btn-yes-now" onclick="sayYes()">Theek hai, haan! ❤️</button>
-      <button class="btn-no-again" onclick="sayNo()">Phir bhi nahi</button>
+      <p class="tease-text" id="teaseText"></p>
+      <div class="overlay-btns">
+        <button class="btn-yes-now" onclick="sayYes()">Achha theek hai, Haan! ❤️</button>
+        <button class="btn-no-again" onclick="sayNo()">Phir bhi... Nahi 😤</button>
+      </div>
       <p class="no-count-hint" id="noHint"></p>
     </div>
-
     <div class="yes-screen" id="yesScreen">
-      <span style="font-size:72px">🥳</span>
-      <h2>Maine jaanta tha!</h2>
-      <div class="confetti-emoji">🎉💖🎊</div>
-      <p>Meri pyaari Sundari, meri Bhootni,<br>meri Chudail — tum hi meri duniya ho!<br><br>Teri haan ne mera din bana
-        diya! 😍<br>I love you so much!</p>
+      <span class="yes-big">🥳</span>
+      <h2>MAINE SOCHA HI THA!</h2>
+      <div class="confetti-row">🎉 💖 🎊 💕 🌸</div>
+      <p class="sub">
+        Meri pyaari Jaan,<br>
+        Meri Katrina Kaif,<br>
+        <strong>9 saal... aur har baar tujhse hi pyaar!</strong><br><br>
+        Teri "Haan" ne sab kuch perfect bana diya! 😍<br><br>
+        I love you so much Himanshi! 💖
+      </p>
     </div>
   </div>
 </div>
-
 <script>
-  const teases = [
-    { e: "😢", t: "Yeh sach mein bola? Meri Himu itni cruel hai? Mera dil toot gaya..." },
-    { e: "😭", t: "Chudail! Tune thoda sa bhi pyaar nahi diya! Main rote rote pagal ho jaunga..." },
-    { e: "🥺", t: "Arre Butki, ek baar phir soch! Itna bura bhi nahi hoon main..." },
-    { e: "😩", t: "Kalki Bhangan ese mt Dara! Par pyaar mein darr nahi lagta..." },
-    { e: "😤", t: "Bhukkad! Khoon mat pii mera — itna hi bacha hai sarir me !" },
-    { e: "💔", t: "Jyada natak mat kar.... Chota Packet bada dhamaka..." },
-    { e: "🙄", t: "Achhha? Main itna bura lagta hoon? Phir meri baatein kyun sunti ho?" },
-    { e: "😅", t: "Haan haan, 'nahi' bol do... par aankhein toh keh rahi hain kuch aur!" },
-    { e: "🤧", t: "Mere saare sapne mein sirf tu thi... aur yahan tu nahi maanati! Drama queen!" },
-    { e: "😏", t: "Tune whatsapp pe 'haha' kyun bheja tha phir? Hate mein toh aisa nahi karte..." },
-    { e: "🫠", t: "Meri Bhootni! Itni scary decisions nahi lene chahiye zindagi mein!" },
-    { e: "😇", t: "Main bahut seedha saadha insaan hoon... bas teri zaroorat hai. Bas." },
-    { e: "😋", t: "Bhukkad! Aaj tune jo khaya, woh maine order karwaya tha. Yahi pyaar hai!" },
-    { e: "🥹", t: "Complan Girl — teri height toh zyada nahi, par mere dil mein teri jagah sabse badi hai!" },
-    { e: "😤", t: "Okay fine. Nahi. Par kal call mat karna. Aur parso bhi mat. Aur... ugh!" },
-    { e: "😢", t: "Main ghar ja raha hoon. Rona wala hoon. Khush ho tum? " },
-    { e: "🐾", t: "Tune mujhe 'no' bola, par Tera Dil bhi mere se baat krta hai . Usse pata hai sach!" },
-    { e: "🌧️", t: "Aaj barish ho rahi hai kyunki main sad hoon. Nature bhi samajhta hai meri feelings!" },
-    { e: "😫", t: "Chudail! Tu dil ka jaadu karti hai aur phir 'nahi' bolti hai? Yeh toh zyaadati hai!" },
-    { e: "🙈", t: "Main aankhein band kar leta hoon aur phir bhi sirf tera chehra dikhta hai. Explain this!" },
-    { e: "🤡", t: "Main joker nahi hoon — par tu mujhe hasa deti hai bina kuch kiye. Kya yeh pyaar nahi?" },
-    { e: "💀", t: "'Nahi' sunke toh lag raha hai main khatam. mujhe bacha lo please!" },
-    { e: "😬", t: "Teri Jaadu wali skills use kar ke haaan bolwa lo khud se. Main wait karunga!" },
-    { e: "🫶", t: "Bhukkad, main ghar pe Pizza bana bana kr khilauga apne hatho se , abhi bhi naa bolegi?" },
-    { e: "😎", t: "Fine. Tu nahi maanati. Par duniya jaanti hai — Himanshi aur Sachin perfect hain!" },
-    { e: "🌹", t: "Har din ek phool bhejunga tab tak jab tak nahi bol deti... ghar ful ho jaayega!" },
-    { e: "🤭", t: "Babyyyyyy, tu jab mujhse argue karti hai tab bhi cute lagti hai. Yeh pyaar nahi toh kya hai?" },
-    { e: "🥰", t: "Itni baar 'nahi' bola — ab thodi der mein tujhe khud 'haan' bolna padega. Pakka!" },
-    { e: "😌", t: "Chudail, tere bina main ek boring normal insaan hoon. Tu hi meri excitement hai!" },
-    { e: "💖", t: "Okay last chance ... warna tere ghar aata hu main . ruk tu !" },
-  ];
-
-  let noCount = 0;
-
-  function createHearts() {
-    const container = document.getElementById('hearts');
-    const emojis = ['❤️', '💕', '💗', '💓', '🌸', '✨'];
-    for (let i = 0; i < 12; i++) {
-      const h = document.createElement('span');
-      h.className = 'floating-heart';
-      h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      h.style.left = Math.random() * 90 + '%';
-      h.style.animationDelay = (Math.random() * 5) + 's';
-      h.style.animationDuration = (4 + Math.random() * 4) + 's';
-      h.style.fontSize = (12 + Math.random() * 14) + 'px';
-      container.appendChild(h);
-    }
+const teases = [
+  { e:"😢", t:"Yeh sach mein bola? Meri Himu itni cruel hai? Mera dil toot gaya..." },
+  { e:"😭", t:"Chudail! Tune thoda sa bhi pyaar nahi diya! Main rote rote pagal ho jaunga..." },
+  { e:"🥺", t:"Arre Butki, ek baar phir soch! Itna bura bhi nahi hoon main..." },
+  { e:"😩", t:"Kalki Bhangan ese mt Dara! Par pyaar mein darr nahi lagta..." },
+  { e:"😤", t:"Bhukkad! Khoon mat pii mera — itna hi bacha hai sarir me!" },
+  { e:"💔", t:"Jyada natak mat kar.... Chota Packet bada dhamaka..." },
+  { e:"🙄", t:"Achhha? Main itna bura lagta hoon? Phir meri baatein kyun sunti ho?" },
+  { e:"😅", t:"Haan haan, 'nahi' bol do... par aankhein toh keh rahi hain kuch aur!" },
+  { e:"🤧", t:"Mere saare sapne mein sirf tu thi... aur yahan tu nahi maanati! Drama queen!" },
+  { e:"😏", t:"Tune whatsapp pe 'haha' kyun bheja tha phir? Hate mein toh aisa nahi karte..." },
+  { e:"🫠", t:"Meri Bhootni! Itni scary decisions nahi lene chahiye zindagi mein!" },
+  { e:"😇", t:"Main bahut seedha saadha insaan hoon... bas teri zaroorat hai. Bas." },
+  { e:"😋", t:"Bhukkad! Aaj tune jo khaya, woh maine order karwaya tha. Yahi pyaar hai!" },
+  { e:"🥹", t:"Complan Girl — teri height toh zyada nahi, par mere dil mein teri jagah sabse badi hai!" },
+  { e:"😤", t:"Okay fine. Nahi. Par kal call mat karna. Aur parso bhi mat. Aur... ugh!" },
+  { e:"😢", t:"Main ghar ja raha hoon. Rona wala hoon. Khush ho tum?" },
+  { e:"🐾", t:"Tune mujhe 'no' bola, par Tera Dil bhi mere se baat krta hai. Usse pata hai sach!" },
+  { e:"🌧️", t:"Aaj barish ho rahi hai kyunki main sad hoon. Nature bhi samajhta hai meri feelings!" },
+  { e:"😫", t:"Chudail! Tu dil ka jaadu karti hai aur phir 'nahi' bolti hai? Yeh toh zyaadati hai!" },
+  { e:"🙈", t:"Main aankhein band kar leta hoon aur phir bhi sirf tera chehra dikhta hai. Explain this!" },
+  { e:"🤡", t:"Main joker nahi hoon — par tu mujhe hasa deti hai bina kuch kiye. Kya yeh pyaar nahi?" },
+  { e:"💀", t:"'Nahi' sunke toh lag raha hai main khatam. mujhe bacha lo please!" },
+  { e:"😬", t:"Teri Jaadu wali skills use kar ke haaan bolwa lo khud se. Main wait karunga!" },
+  { e:"🫶", t:"Bhukkad, main ghar pe Pizza bana bana kr khilauga apne hatho se, abhi bhi naa bolegi?" },
+  { e:"😎", t:"Fine. Tu nahi maanati. Par duniya jaanti hai — Himanshi aur Sachin perfect hain!" },
+  { e:"🌹", t:"Har din ek phool bhejunga tab tak jab tak nahi bol deti... ghar ful ho jaayega!" },
+  { e:"🤭", t:"Babyyyyyy, tu jab mujhse argue karti hai tab bhi cute lagti hai. Yeh pyaar nahi toh kya hai?" },
+  { e:"🥰", t:"Itni baar 'nahi' bola — ab thodi der mein tujhe khud 'haan' bolna padega. Pakka!" },
+  { e:"😌", t:"Chudail, tere bina main ek boring normal insaan hoon. Tu hi meri excitement hai!" },
+  { e:"💖", t:"Okay last chance... warna tere ghar aata hu main. ruk tu!" },
+];
+let noCount = 0;
+function createHearts() {
+  const container = document.getElementById('hearts');
+  const emojis = ['❤️','💕','💗','💓','🌸','✨','💖','🌺'];
+  for (let i = 0; i < 16; i++) {
+    const h = document.createElement('span');
+    h.className = 'floating-heart';
+    h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    h.style.left = Math.random() * 92 + '%';
+    h.style.animationDelay = (Math.random() * 6) + 's';
+    h.style.animationDuration = (5 + Math.random() * 5) + 's';
+    h.style.fontSize = (12 + Math.random() * 16) + 'px';
+    container.appendChild(h);
   }
-
-  function sayNo() {
-    const idx = noCount % teases.length;
-    const t = teases[idx];
-    document.getElementById('teaseEmoji').textContent = t.e;
-    document.getElementById('teaseText').textContent = t.t;
-    noCount++;
-    const hint = noCount < 5 ? `${5 - noCount} aur baar 'nahi' bol sakti ho...` :
-      noCount < 15 ? `${15 - noCount} aur chances... phir mandatory haan!` :
-        noCount < 30 ? `Tune ${noCount} baar nahi bola! Seriously?!` :
-          `${noCount} baar!! Tu definitely mujhse pyaar karti hai! Haan bol de!`;
-    document.getElementById('noHint').textContent = hint;
-    document.getElementById('teaseOverlay').classList.add('show');
-
-    const noBtn = document.getElementById('noBtn');
-    noBtn.style.fontSize = Math.max(10, 16 - noCount * 0.3) + 'px';
-    noBtn.style.opacity = Math.max(0.3, 1 - noCount * 0.02);
+}
+function sayNo() {
+  const idx = noCount % teases.length;
+  const t = teases[idx];
+  document.getElementById('teaseEmoji').textContent = t.e;
+  document.getElementById('teaseText').textContent = t.t;
+  noCount++;
+  let hint = '';
+  if (noCount === 1) hint = 'Ek baar maafi milti hai... 😅';
+  else if (noCount < 5) hint = `${5 - noCount} aur chances baaki hain...`;
+  else if (noCount < 10) hint = `${noCount} baar nahi? Tune record toda!`;
+  else if (noCount < 20) hint = `${noCount} baar!! Seriously Himanshi?!`;
+  else if (noCount < 30) hint = `${noCount} baar nahi bola... main rone wala hoon 😭`;
+  else hint = `${noCount} baar!! Tu definitely mujhse pyaar karti hai — admit kar lo!`;
+  document.getElementById('noHint').textContent = hint;
+  document.getElementById('teaseOverlay').classList.add('show');
+  const noBtn = document.getElementById('noBtn');
+  noBtn.style.fontSize = Math.max(9, 16 - noCount * 0.35) + 'px';
+  noBtn.style.opacity = Math.max(0.25, 1 - noCount * 0.025);
+  noBtn.style.padding = `${Math.max(6, 15 - noCount * 0.3)}px ${Math.max(12, 36 - noCount * 0.5)}px`;
+}
+function sayYes() {
+  document.getElementById('teaseOverlay').classList.remove('show');
+  const ys = document.getElementById('yesScreen');
+  ys.classList.add('show');
+  const sparkleEmojis = ['⭐','✨','💫','🌟','💥'];
+  for (let i = 0; i < 8; i++) {
+    const s = document.createElement('span');
+    s.className = 'sparkle';
+    s.textContent = sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)];
+    s.style.top = Math.random() * 80 + '%';
+    s.style.left = Math.random() * 80 + '%';
+    s.style.animationDelay = (Math.random() * 2) + 's';
+    ys.appendChild(s);
   }
-
-  function sayYes() {
-    document.getElementById('teaseOverlay').classList.remove('show');
-    document.getElementById('yesScreen').classList.add('show');
-    for (let i = 0; i < 20; i++) {
-      setTimeout(() => {
-        const h = document.createElement('span');
-        h.style.cssText = `position:fixed;top:${Math.random() * 80}%;left:${Math.random() * 90}%;font-size:${20 + Math.random() * 20}px;pointer-events:none;animation:floatUp 2s ease forwards;z-index:100`;
-        h.textContent = '❤️';
-        document.getElementById('app').appendChild(h);
-        setTimeout(() => h.remove(), 2000);
-      }, i * 100);
-    }
-  }
-
-  createHearts();
+}
+createHearts();
 </script>
+</body>
+</html>
